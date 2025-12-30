@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+
+    <input type="number" id="num1" placeholder="num1">
+    <input type="number" id="num2" placeholder="num2">
+    <button onclick="soma()">calcular</button>
+
+    <br><br>
+    <input type="number" id="parImpar" placeholder="par ou impar">
+    <button onclick="verificar()">verificar</button>
+
+
+    <br><br>
+    <input type="number" id="numTabuada" placeholder="Qual num quer a tabuada">
+    <button onclick="tabuada()">Tabuada</button>
+
+    <br><br>
+
+    <input type="number" id="imprimirAte" placeholder="imprimir até? ">
+    <button onclick="imprimirAte()">imprimir</button>
+    <div id="ImpressaoRecultado"></div>
+
+    <br><br>
+    <input type="number" id="cateto1" placeholder="cateto">
+    <input type="number" id="cateto2" placeholder="cateto">
+    <button onclick="hipotenuza()">calcular hipotenuza</button>
+
+
+    <br><br>
+    <input type="number" id="catetoX1" placeholder="cateto">
+    <input type="number" id="hipotenuzaValor" placeholder="hipotenuza">
+    <button onclick="cateto()">calcular cateto</button>
+
+    <div id="hipotenuzaResultado"></div>
+
+      <br><br>
+
+    <button type="number" class="numero" id="zero">0</button>
+    <button type="number" class="numero" id="um">1</button>
+    <button type="number" class="numero" id="dois">2</button><br>
+
+    <button type="number" class="numero" id="tres">3</button>
+    <button type="number" class="numero" id="quatro">4</button>
+    <button type="number" class="numero" id="cinco">5</button><br>
+
+    <button type="number" class="numero" id="seis">6</button>
+    <button type="number" class="numero" id="sete">7</button>
+    <button type="number" class="numero" id="oito">8</button><br>
+
+    <button type="number" class="numero" id="nove">9</button><br>
+
+    <button type="number" class="numero" id="soma">+</button>
+    <button type="number" class="numero" id="menos">-</button>
+    <button type="number" class="numero" id="vezes">*</button>
+    <button type="number" class="numero" id="divisao">/</button>
+    <button type="number" class="numero" id="limpar">C</button>
+
+    <button id="igual">=</button>
+
+    <div id="calculadoraResultado"></div>
+
+    <script>
+
+            let valorAtual = "";
+            let valorAnterior = null;
+            let operador = null;
+
+            document.querySelectorAll('.numero').forEach(botao => {
+                botao.addEventListener('click', () => {
+                    valorAtual += botao.innerText;
+                    document.querySelector('#calculadoraResultado').innerHTML = valorAtual;
+                });
+            });
+
+            document.querySelector('#soma').addEventListener('click', () => {
+                valorAnterior = parseFloat(valorAtual);
+                operador = '+';
+                valorAtual = "";
+            });
+             document.querySelector('#vezes').addEventListener('click', () => {
+                valorAnterior = parseFloat(valorAtual);
+                operador = '*';
+                valorAtual = "";
+            });
+             document.querySelector('#divisao').addEventListener('click', () => {
+                valorAnterior = parseFloat(valorAtual);
+                operador = '/';
+                valorAtual = "";
+            });
+             document.querySelector('#menos').addEventListener('click', () => {
+                valorAnterior = parseFloat(valorAtual);
+                operador = '-';
+                valorAtual = "";
+            });
+             document.querySelector('#limpar').addEventListener('click', () => {
+                operador = '';
+                valorAtual = "";
+                document.querySelector('#calculadoraResultado').innerHTML = "";
+            });
+
+            document.querySelector('#igual').addEventListener('click', () => {
+                let resultado;
+
+                if (operador === '+') {
+                    resultado = valorAnterior + parseFloat(valorAtual);
+                }
+                if (operador === '-') {
+                    resultado = valorAnterior - parseFloat(valorAtual);
+                }
+                if (operador === '/') {
+                    resultado = valorAnterior / parseFloat(valorAtual);
+                }
+                if (operador === '*') {
+                    resultado = valorAnterior * parseFloat(valorAtual);
+                }
+
+                document.querySelector('#calculadoraResultado').innerHTML = resultado;
+                valorAtual = resultado.toString();
+            });
+
+
+        let idades = [10,12,30,40,11,60,70,80,90];
+        for(let i= 0; i < idades.length;i++){
+            let idade = idades[i];
+            if(idade <= 18){
+                console.log("A idade "+idade+" é menor de 18")
+            } else{
+                console.log("idade "+idade+" maior"); 
+            }       
+        }
+
+        function hipotenuza(){
+            let cateto1 = document.getElementById("cateto1").value;
+            let cateto2 = document.getElementById("cateto2").value;
+            let hipotenuza = parseFloat((cateto1 * cateto1)+ (cateto2*cateto2));
+            let hipotenuzaCalc = Math.sqrt(hipotenuza)
+            console.log(hipotenuzaCalc)
+        }
+
+        function cateto(){
+            let catetoX1 = document.getElementById("catetoX1").value;
+            let hipotenuzaValor = document.getElementById("hipotenuzaValor").value;
+            let hipotenuzaQuadrado = hipotenuzaValor * hipotenuzaValor;
+            let catetoX1Quadrado = catetoX1*catetoX1;
+            let cateto = hipotenuzaQuadrado - catetoX1Quadrado;
+            let catetoCalc = Math.sqrt(cateto)
+            document.querySelector('#hipotenuzaResultado').innerHTML = catetoCalc;
+        }
+
+
+        function tabuada(){
+            let numTabuada = document.getElementById("numTabuada").value;
+            for(let i = 0; i <= 10; i++){
+                let tabuada = parseFloat(numTabuada) * i;
+                console.log(numTabuada + " x " + i + " = " + tabuada)
+            };
+        }
+
+        function imprimirAte(){
+            let imprimirAte = document.getElementById("imprimirAte").value;
+            for(let i = 0; i <= imprimirAte; i++){
+                console.log(i);
+                //document.querySelector('#ImpressaoRecultado').innerHTML = i;
+            };
+        }
+    
+       let i = 0;
+       while(i < 5){
+            console.log("loop teste while");
+            i++;
+       }
+
+        // let nome = "mateus";
+        // console.log("olá, ", nome, "seja bem-vindo!");
+        function soma(){
+            let num1 = document.getElementById("num1").value;
+            let num2 = document.getElementById("num2").value;
+
+            let soma = parseFloat(num1) + parseFloat(num2);
+            console.log("Soma: ", soma);
+            window.alert('Soma: '+ soma)
+        }
+
+
+        function verificar(){
+            var num = document.getElementById("parImpar").value;
+            if(num % 2 == 0){
+                console.log("par");
+            }else{
+                console.log("impar");
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
