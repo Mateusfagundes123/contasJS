@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculo Décimo Terceiro</title>
 </head>
+<script src="../JS/script.js"></script>
 <body>
     <header>
         <div>Cálculos</div>
@@ -21,90 +22,17 @@
             <input type="number" id="mesesTrabalhados" placeholder="Número de meses trabalhados" class="campoInformacao">
             <input type="number" id="salarioInteiro" placeholder="informe seu salario" class="campoInformacao">
             <input type="number" id="dependentes" placeholder="Dependentes" class="campoInformacao">
-            <button onclick="calculoDecimoTerceiro()">Calcular</button>
+            <select id="parcela" class="campoInformacao">
+                <option value="unica">Única</option>
+                <option value="primeira">Primeira</option>
+                <option value="segunda">Segunda</option>
+            </select>
+            
+            <button class="botaoCalcular" onclick="calculoDecimoTerceiro()">Calcular</button>
 
             <div id="resultado"></div>
         </div>
     </section>
-    <script>
-
-        function calculoDecimoTerceiro(){
-
-            var mesesTrabalhados = document.getElementById('mesesTrabalhados').value;
-            var salarioInteiro = document.getElementById('salarioInteiro').value;
-            var dependentes = document.getElementById('dependentes').value;
-
-            var salario = parseFloat((salarioInteiro/12)*mesesTrabalhados);
-
-            var salarioMinimo = 1518;
-            var somaDescontoInss = 0;
-
-            if(salario <= salarioMinimo){
-                var descFaixaUm = salario * 0.075.toFixed(2);
-                somaDescontoInss = descFaixaUm;
-            }
-            else if(salario > salarioMinimo && salario <= 2793.88){
-                let restoFaixa = salario - salarioMinimo;
-                let descFaixaDois = restoFaixa * 0.09.toFixed(2);
-                let descoFaixaUm = salarioMinimo * 0.075.toFixed(2);
-                somaDescontoInss = descFaixaDois + descoFaixaUm;
-            }
-            else if(salario > 2793.88 && salario <= 4190.84){
-                let restoFaixa =  salario - 2793.88.toFixed(2);
-                let descontoFaixaTres = restoFaixa * 0.12.toFixed(2);
-                let descFaixaDois = 1275.88 * 0.09.toFixed(2);
-                let descoFaixaUm = salarioMinimo * 0.075.toFixed(2);
-                somaDescontoInss = descoFaixaUm + descFaixaDois + descontoFaixaTres;
-            }
-
-            else if(salario > 4190.84 && salario < 8157.41){
-                let restoFaixa =  salario - 4190.83.toFixed(2);
-                let descFaixaQuatro = restoFaixa * 0.14.toFixed(2);
-                let descontoFaixaTres = 1396.94 * 0.12.toFixed(2);
-                let descFaixaDois = 1275.88 * 0.09.toFixed(2);
-                let descoFaixaUm = salarioMinimo * 0.075.toFixed(2);
-                somaDescontoInss = descoFaixaUm + descFaixaDois + descontoFaixaTres + descFaixaQuatro;
-            }
-
-            var valorDescontoDependete = 189.59;
-
-            var descontoDependentes = dependentes * valorDescontoDependete;
-            console.log(salario)
-            var baseIr = salario - (somaDescontoInss + descontoDependentes);
-
-            var somaDescontoIR = 0;
-
-            if(baseIr < 2259.21){
-                somaDescontoIR = 0;
-            }
-            else if(baseIr >= 2259.21 && baseIr <= 2826.65){
-                var desconteDeduzir = 169.44;
-                somaDescontoIR = ((baseIr * 0.075.toFixed(2)) - desconteDeduzir);
-            }
-            else if(baseIr > 2826.65 && baseIr < 3751.05){
-                var desconteDeduzir = 381.44;
-                somaDescontoIR = ((baseIr * 0.15.toFixed(2)) - desconteDeduzir);
-            }
-            else if(baseIr > 3751.05 && baseIr < 4664.68){
-                var desconteDeduzir = 662.77;
-                somaDescontoIR = ((baseIr * 0.225.toFixed(2)) - desconteDeduzir);
-            }
-            else{
-                var desconteDeduzir = 896;
-                somaDescontoIR = ((baseIr * 0.275.toFixed(2)) - desconteDeduzir);
-            }
-            console.log(somaDescontoIR)
-            console.log(descontoDependentes)
-            console.log(somaDescontoInss)
-            
-
-            var decimoPUnica = salario - somaDescontoIR - somaDescontoInss;
-
-            document.querySelector('#resultado').innerHTML = decimoPUnica;
-
-        }
-
-    </script>
 
     <style>
 
@@ -152,16 +80,21 @@
             justify-content: center;
             align-items: center;
         }
+         .calculo > div{
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+         }
             
-        
-
         .campoInformacao{
-            width: 150px;
-            height: 30px;
+            width: 400px;
+            height: 60px;
             border-radius: 5px;
         }
-
-
+        .botaoCalcular{
+            width: 400px;
+            height: 60px;
+        }
 
     </style>
     
