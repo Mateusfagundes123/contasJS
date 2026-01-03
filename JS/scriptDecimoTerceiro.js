@@ -71,18 +71,15 @@ function calculoDecimoTerceiro() {
             somaDescontoIR = ((baseIr * 0.275) - desconteDeduzir);
         }
        
-
-        var segundaParcela = salario - primeiraParcela - somaDescontoInss - somaDescontoIR;
-
-        var decimoPUnica = salario - somaDescontoIR - somaDescontoInss;
-        decimoPUnica = decimoPUnica.toFixed(2);
-
         var primeiraParcela = salario / 2;
-        primeiraParcela = primeiraParcela.toFixed(2);
+        var segundaParcela = salario - primeiraParcela - somaDescontoInss - somaDescontoIR;
+        var decimoPUnica = salario - somaDescontoIR - somaDescontoInss;
 
+        decimoPUnica = decimoPUnica.toFixed(2);
+        primeiraParcela = primeiraParcela.toFixed(2);
         segundaParcela = segundaParcela.toFixed(2);
 
-        var descontosSoma = somaDescontoIR + somaDescontoInss;
+        var descontosSoma = somaDescontoIR + somaDescontoInss;  
 
         descontosSoma = descontosSoma.toFixed(2)
         somaDescontoIR = somaDescontoIR.toFixed(2);
