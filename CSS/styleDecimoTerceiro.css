@@ -1,146 +1,182 @@
 * {
-            box-sizing: border-box;
-        }
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-        }
+body {
+    margin: 0;
+    padding: 0;
+}
 
-        header {
-            width: 100%;
-            height: 60px;
-            background-color: black;
-            color: aliceblue;
+header {
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    color: aliceblue;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 30px;
-            position: fixed;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .linksHeader {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
-        .linksHeader a {
-            color: aliceblue;
-            text-decoration: none;
-            font-weight: 500;
-        }
+.linksHeader {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-        .linksHeader a:hover {
-            text-decoration: underline;
-        }
+.linksHeader a {
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+}
 
-        .calculo {
-            padding: 80px 0 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.linksHeader a:hover {
+    text-decoration: underline;
+}
 
-        .calculo>div {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+.calculo {
+    padding: 80px 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .calculo img {
-            width: 22px;
-            height: 22px;
-        }
+.calculo>div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
-        .campo {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+.calculo img {
+    width: 22px;
+    height: 22px;
+}
 
-        .label-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
-        .label-info img {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
+.label-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .campoInformacao {
-            width: 400px;
-            height: 60px;
-            border-radius: 5px;
-        }
+.label-info img {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
 
-        .botaoCalcular {
-            width: 400px;
-            height: 60px;
-        }
+.campoInformacao {
+    height: 60px;
+    border-radius: 5px;
+}
 
-        .resultadoDiv {
-            width: 400px;
-            height: 60px;
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            background-color: rgb(226, 226, 226);
-        }
+.botaoCalcular {
+    height: 60px;
+}
 
-        .tooltip {
-            position: relative;
-        }
+.resultadoDiv {
+    height: 60px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: rgb(226, 226, 226);
+}
 
-        .tooltip-text {
-            position: absolute;
-            bottom: 120%;
-            background: #333;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-        }
+.campoInformacao,
+.botaoCalcular,
+.resultadoDiv {
+    width: 100%;
+    max-width: 400px;
+}
 
-        .tooltip:hover .tooltip-text {
-            opacity: 1;
-        }
+.calculo>div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 420px;
+    padding: 0 15px;
+}
+.tooltip {
+    position: relative;
+}
 
-        .Descontos {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 60px;
-        }
+.tooltip-text {
+    position: absolute;
+    bottom: 120%;
 
-        .tabela {
-            border-collapse: collapse;
-        }
+    left: 50%;
+    transform: translateX(-100%); 
 
-        .tabela td,
-        .tabela th {
-            border: 1px solid #000;
-            padding: 8px;
-            text-align: center;
-            width: 120px;
-        }
+    background: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
 
-        footer {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
 
-            width: 100%;
-            height: 60px;
-            background-color: black;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            display: flex;
-        }
+.tooltip:hover .tooltip-text {
+    opacity: 1;
+}
+
+.Descontos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.tabela {
+    border-collapse: collapse;
+}
+
+.tabela td,
+.tabela th {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    width: 120px;
+}
+
+footer {
+
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .linksHeader {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
