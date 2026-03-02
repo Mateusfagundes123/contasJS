@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaskara</title>
+    <link rel="stylesheet" href="../CSS/styleBhaskara.css">
+    <link rel="icon" type="image/png" href="../IMG/matematica.png">
+
+
+</head>
+    <script src="../JS/bhaskara.js"></script>
+<body>
+
+      <header>
+        <div>Cálculos</div>
+        <ul class="linksHeader">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">Decimo Terceiro</a></li>
+            <li><a href="./bhaskara.html">Bhaskara</a></li>
+        </ul>
+    </header>
+
+    <section class="calculo">
+        <div>
+            <h1>Calculadora <br>de Bhaskara</h1>
+            <p>Informe os valores de A, B e C</p>
+            <input type="number" id="a" placeholder="Valor A" class="campoNumeros">
+            <input type="number" id="b" placeholder="Valor B" class="campoNumeros">
+            <input type="number" id="c" placeholder="Valor C" class="campoNumeros">
+
+            <button class="campoNumerosBotao" onclick="calculoBhaskara()">Calcular </button>
+
+        </div>
+
+    </section>
+
+    <section class="resultados">
+        <table class="tabela">
+             <tr>
+                <td>Resultados</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Delta:</td>
+                <td id="deltaResultado"></td>
+            </tr>
+            <tr>
+                <td>X1:</td>
+                <td id="x1Resultado"></td>
+            </tr>
+            <tr>
+                <td>X2:</td>
+                <td id="x2Resultado"></td>
+            </tr>
+        </table>
+    </section>
+
+    
+</body>
+</html>
