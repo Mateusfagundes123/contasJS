@@ -6,33 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frações</title>
     <link rel="icon" type="image/png" href="../IMG/forma.png">
-
-
 </head>
 
 <body>
-    <label for="">p1</label>
-    <input type="number" id="p1">
+    <header>
+        <div>Cálculos</div>
+        <ul class="linksHeader">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">Decimo Terceiro</a></li>
+            <li><a href="./bhaskara.html">Bhaskara</a></li>
+        </ul>
+    </header>
 
-    <label for="">p3</label>
-    <input type="number" id="p3">
-    <br>
-    <br>
+    <section class="textFracao">
+        <h1>Calculadora de frações</h1>
+        <p>escolha a operação que deseja realizar</p>
+    </section>
 
-    <label for="">p2</label>
-    <input type="number" id="p2">
+    <section class="container">
 
-    <label for="">p4</label>
-    <input type="number" id="p4">
+        <div class="fracao">
+            <input type="number" placeholder="P1" id="p1">
+            <hr>
+            <input type="number" placeholder="P2" id="p2">
+        </div>
 
-    <button onclick="calcular()">Calcular</button>
+        <p class="operador" id="tipoOperacao"></p>
+
+        <div class="fracao">
+            <input type="number" placeholder="P3" id="p3">
+            <hr>
+            <input type="number" placeholder="P4" id="p4">
+        </div>
+        <button onclick="calcular()">Calcular</button>
+
+        <table>
+            <tr>
+                <td>Numerador</td>
+                <td id="numerador"></td>
+            </tr>
+            <tr>
+                <td>Denominador </td>
+                <td id="denominador"></td>
+            </tr>
+        </table>
+
+
+    </section>
+    <section class="resultado">
+        <select id="operacao" class="campoInformacao"  onchange="icon()">
+            <option value="soma">Soma</option>
+            <option value="subtracao">Subtração</option>
+            <option value="divisao">Divisão</option>
+            <option value="multiplicação">multiplicação</option>
+        </select>
+
+    </section>
+
+
+
+
+
 
     <script>
+        window.onload = function () {
+            icon();
+        }
 
-        // function calcularFracao() { 
-        //fazer as 4 operações, para soma e menos o mmc esta pronto 
-           
-        // }
+        function icon() {
+            var operacao = document.getElementById('operacao').value;
+            if (operacao === 'soma') {
+                document.querySelector('#tipoOperacao').innerHTML = "+";
+            }
+            else if (operacao === 'subtracao') {
+                document.querySelector('#tipoOperacao').innerHTML = "-";
+            }
+            else if (operacao === 'divisao') {
+                document.querySelector('#tipoOperacao').innerHTML = "/";
+            }
+            else if (operacao === 'multiplicação') {
+                document.querySelector('#tipoOperacao').innerHTML = "x";
+            }
+
+
+
+        }
 
         function mdc(p2, p4) {
             while (p4 !== 0) {
@@ -45,9 +103,7 @@
 
         function mmc(p2, p4) {
             if (p2 === 0 || p4 === 0) return 0;
-            //return Math.abs(a * b) / mdc(a, b);
             return Math.abs(p2 * p4) / mdc(p2, p4);
-            //var resultadoMmc = Math.abs(p2 * p4) / mdc(p2, p4);
         }
 
 
@@ -58,11 +114,153 @@
             var p3 = Number(document.getElementById('p3').value);
             var p4 = Number(document.getElementById('p4').value);
 
-           window.alert(mmc(p2,p4)) //retorna o mmc da conta 
+            var operacao = document.getElementById('operacao').value;
+
+
+            if (operacao === 'soma') {
+                if (p2 != p4) {
+                    var mmcNumeros = (mmc(p2, p4));
+                    var px1 = (mmcNumeros / p2) * p1;
+                    var px2 = (mmcNumeros / p4) * p3;
+                    var numerador = px1 + px2;
+                    var denominador = mmcNumeros;
+                }
+                else {
+                    var numerador = px1 + px2;
+                    var denominador = p2;
+                }
+                document.querySelector('#numerador').innerHTML = numerador;
+                document.querySelector('#denominador').innerHTML = denominador;
+
+            }
+            else if (operacao === 'subtracao') {
+                if (p2 != p4) {
+                    var mmcNumeros = (mmc(p2, p4));
+                    var px1 = (mmcNumeros / p2) * p1;
+                    var px2 = (mmcNumeros / p4) * p3;
+                    var numerador = px1 - px2;
+                    var denominador = mmcNumeros;
+                } else {
+                    var demoninador = p2;
+                    var numerador = px1 - px2;
+                }
+                document.querySelector('#numerador').innerHTML = numerador;
+                document.querySelector('#denominador').innerHTML = denominador;
+            }
+            else if (operacao === 'divisao') {
+                var numerador = p1 * p4;
+                var denominador = p2 * p3;
+                document.querySelector('#numerador').innerHTML = numerador;
+                document.querySelector('#denominador').innerHTML = denominador;
+            }
+            else if (operacao === 'multiplicação') {
+                var numerador = p1 * p3;
+                var denominador = p2 * p4;
+                document.querySelector('#numerador').innerHTML = numerador;
+                document.querySelector('#denominador').innerHTML = denominador;
+            }
         }
 
 
     </script>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .fracao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fracao input {
+            width: 80px;
+            height: 40px;
+            text-align: center;
+        }
+
+        .fracao hr {
+            width: 80px;
+            height: 3px;
+            background: black;
+            border: none;
+        }
+
+        .operador {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .textFracao {
+            padding: 80px 0 40px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .resultado {
+            padding: 80px 0 40px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 60px;
+            padding: 20px;
+            background-color: black;
+            color: aliceblue;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .linksHeader {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .linksHeader a {
+            color: aliceblue;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .linksHeader a:hover {
+            text-decoration: underline;
+        }
+
+        .calculo {
+            padding: 80px 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 
 </body>
 
