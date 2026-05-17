@@ -1,9 +1,17 @@
 <header>
-    <div>Cálculos</div>
-    <ul class="linksHeader">
+    <div class="logo">Cálculos</div>
+
+    <!-- Botão Hamburguer -->
+    <div class="menuHamburguer" onclick="abrirMenu()">
+        ☰
+    </div>
+
+    <!-- Links -->
+    <ul class="linksHeader" id="menu">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="#">Decimo Terceiro</a></li>
-        <li><a href="./bhaskara.html">Bhaskara</a></li>
+        <li><a href="../HTML/decimoTerceiro.html">Decimo Terceiro</a></li>
+        <li><a href="../HTML/bhaskara.html">Bhaskara</a></li>
+        <li><a href="../HTML/fatorial.html">Fatorial</a></li>
     </ul>
 </header>
 
@@ -12,7 +20,9 @@
         box-sizing: border-box;
     }
 
-
+    body {
+        margin: 0;
+    }
 
     header {
         width: 100%;
@@ -28,6 +38,12 @@
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .linksHeader {
@@ -47,5 +63,40 @@
 
     .linksHeader a:hover {
         text-decoration: underline;
+    }
+
+    /* Botão hamburguer */
+    .menuHamburguer {
+        display: none;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+
+        .menuHamburguer {
+            display: block;
+        }
+
+        .linksHeader {
+            display: none;
+
+            position: absolute;
+            top: 60px;
+            right: 0;
+
+            width: 220px;
+            background-color: black;
+
+            flex-direction: column;
+            gap: 20px;
+
+            padding: 20px;
+        }
+
+        .linksHeader.ativo {
+            display: flex;
+        }
     }
 </style>

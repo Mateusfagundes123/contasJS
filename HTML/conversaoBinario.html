@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhaskara</title>
+    <title>Binário</title>
     <link rel="stylesheet" href="../CSS/styleBhaskara.css">
     <link rel="icon" type="image/png" href="../IMG/matematica.png">
 
 
 </head>
-<script src="../JS/bhaskara.js"></script>
-
+    <script src="../JS/conversao.js"></script>
 <body>
 
     <div id="header"></div>
@@ -22,11 +20,9 @@
         <div>
             <h1>Calculadora <br>de Bhaskara</h1>
             <p>Informe os valores de A, B e C</p>
-            <input type="number" id="a" placeholder="Valor A" class="campoNumeros">
-            <input type="number" id="b" placeholder="Valor B" class="campoNumeros">
-            <input type="number" id="c" placeholder="Valor C" class="campoNumeros">
+            <input type="number" id="decimal" placeholder="Valor Decimal" class="campoNumeros">
 
-            <button class="campoNumerosBotao" onclick="calculoBhaskara()">Calcular </button>
+            <button class="campoNumerosBotao" onclick="calculoBiDecimalBinario()">Calcular </button>
 
         </div>
 
@@ -34,7 +30,7 @@
 
     <section class="resultados">
         <table class="tabela">
-            <tr>
+             <tr>
                 <td>Resultados</td>
                 <td></td>
             </tr>
@@ -53,7 +49,6 @@
         </table>
     </section>
 
-
+    
 </body>
-
 </html>

@@ -3,3 +3,7 @@ fetch("../components/header.html")
   .then(data => {
     document.getElementById("header").innerHTML = data;
   });
+  
+  function abrirMenu() {
+    document.getElementById("menu").classList.toggle("ativo");
+}

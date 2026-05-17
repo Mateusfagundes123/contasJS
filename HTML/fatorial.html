@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaskara</title>
+    <link rel="stylesheet" href="../CSS/fatorial.css">
+    <link rel="icon" type="image/png" href="../IMG/matematica.png">
+</head>
+
+<script src="../JS/fatorial.js"></script>
+
+<body>
+
+    <div id="header"></div>
+    <script src="../JS/loadComponents.js"></script>
+
+
+    <section class="calculo">
+        <div>
+            <h1>Calculadora <br>de Fatorial</h1>
+            <p>Informe o valor</p>
+            <input type="number" id="num" placeholder="Valor" class="campoNumeros">
+
+            <button class="campoNumerosBotao" onclick="calculoFatorial()">Calcular </button>
+        </div>
+    </section>
+
+    <section class="resultados">
+        <table class="tabela">
+            <tr>
+                <td>Resultado</td>
+                <td id="Resultado"></td>
+            </tr>
+        </table>
+    </section>
+
+
+</body>
+
+</html>
