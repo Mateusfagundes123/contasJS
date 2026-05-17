@@ -1,21 +1,19 @@
-let caminhoHeader = "";
+const header = document.getElementById("header");
 
-if (window.location.pathname.includes("/HTML/")) {
+let caminhoHeader = "components/header.html";
+
+if (!window.location.pathname.endsWith("index.html") &&
+    window.location.pathname !== "/") {
+
     caminhoHeader = "../components/header.html";
-} else {
-    caminhoHeader = "./components/header.html";
 }
 
 fetch(caminhoHeader)
     .then(res => res.text())
     .then(data => {
-        document.getElementById("header").innerHTML = data;
+        header.innerHTML = data;
     });
 
 function abrirMenu() {
-    document.getElementById("menu").classList.toggle("ativo");
-}
-  
-  function abrirMenu() {
     document.getElementById("menu").classList.toggle("ativo");
 }
